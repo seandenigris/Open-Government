@@ -8,7 +8,7 @@ Class {
 		'action',
 		'votes'
 	],
-	#category : 'OpenGovernment'
+	#category : #OpenGovernment
 }
 
 { #category : #accessing }
@@ -25,8 +25,8 @@ OgCommitteeVote >> action: anObject [
 OgCommitteeVote >> actionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
-			accessor: #action;
-			yourself
+		accessor: #action;
+		yourself
 ]
 
 { #category : #accessing }
@@ -79,8 +79,8 @@ OgCommitteeVote >> date: anObject [
 OgCommitteeVote >> dateDescription [
 	<magritteDescription>
 	^ MADateDescription new
-			accessor: #date;
-			yourself
+		accessor: #date;
+		yourself
 ]
 
 { #category : #'as yet unclassified' }
@@ -102,6 +102,6 @@ OgCommitteeVote >> votes: anObject [
 OgCommitteeVote >> votesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-			accessor: #votes;
-			yourself
+		accessor: #votes;
+		yourself
 ]

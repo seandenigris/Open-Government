@@ -6,7 +6,7 @@ Class {
 		'description',
 		'votes'
 	],
-	#category : 'OpenGovernment'
+	#category : #OpenGovernment
 }
 
 { #category : #accessing }
@@ -23,8 +23,8 @@ OgFloorVote >> date: anObject [
 OgFloorVote >> dateDescription [
 	<magritteDescription>
 	^ MADateDescription new
-			accessor: #date;
-			yourself
+		accessor: #date;
+		yourself
 ]
 
 { #category : #accessing }
@@ -41,8 +41,8 @@ OgFloorVote >> description: anObject [
 OgFloorVote >> descriptionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
-			accessor: #description;
-			yourself
+		accessor: #description;
+		yourself
 ]
 
 { #category : #'as yet unclassified' }
@@ -64,6 +64,6 @@ OgFloorVote >> votes: anObject [
 OgFloorVote >> votesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-			accessor: #votes;
-			yourself
+		accessor: #votes;
+		yourself
 ]

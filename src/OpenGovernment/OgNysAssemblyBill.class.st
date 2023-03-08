@@ -203,7 +203,6 @@ OgNysAssemblyBill >> url [
 { #category : #accessing }
 OgNysAssemblyBill >> viewWebpage [
 	self url open.
-	
 ]
 
 { #category : #'as yet unclassified' }

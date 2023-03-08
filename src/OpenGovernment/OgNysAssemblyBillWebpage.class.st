@@ -46,8 +46,8 @@ OgNysAssemblyBillWebpage class >> exampleScrape [
 { #category : #'instance creation' }
 OgNysAssemblyBillWebpage class >> for: bill [
 	^ self new
-			bill: bill;
-			yourself
+		bill: bill;
+		yourself
 ]
 
 { #category : #accessing }
