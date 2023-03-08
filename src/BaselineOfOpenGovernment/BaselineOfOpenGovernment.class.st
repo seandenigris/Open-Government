@@ -16,10 +16,12 @@ BaselineOfOpenGovernment >> baseline: spec [
 				spec repository: 'github://seandenigris/Magritte' ];
 			baseline: 'Mocketry' with: [
 				spec repository: 'github://dionisiydk/Mocketry' ];
+			baseline: 'MyPeople' with: [
+				spec repository: 'github://SeanDeNigris/My-People' ];
 			baseline: 'PharoEnhancements' with: [
 				spec repository: 'github://seandenigris/Pharo-Enhancements' ];
 			baseline: 'SimplePersistence' with: [
 				spec repository: 'github://seandenigris/Simple-Persistence' ].
 		spec package: #OpenGovernment with: [
-				spec requires: #('ExternalWebBrowser' 'Mocketry' 'PharoEnhancements' 'SimplePersistence'). ]. ]
+				spec requires: #('ExternalWebBrowser' 'Mocketry' 'MyPeople' 'PharoEnhancements' 'SimplePersistence'). ]. ]
 ]

@@ -15,5 +15,6 @@ OpenGovernmentDB class >> schema [
 
 	^ { 
 		OgBill.
-		OgCoogOpinion }.
+		OgCoogOpinion.
+		OgMunis }.
 ]
