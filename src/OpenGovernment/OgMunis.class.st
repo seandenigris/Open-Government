@@ -71,6 +71,18 @@ OgMunis >> accounts: anObject [
 ]
 
 { #category : #accessing }
+OgMunis >> accountsSearchFor: aSearch [
+	<gtSearch>
+	
+	^ aSearch list
+		priority: 100;
+		title: 'Accounts';
+		items: [ self accounts ];
+		matchSubstrings;
+		yourself
+]
+
+{ #category : #accessing }
 OgMunis >> importAccountsFromCSV: aResourceable [
 ]
 
@@ -88,6 +100,18 @@ OgMunis >> objects [
 { #category : #accessing }
 OgMunis >> objects: anObject [
 	objects := anObject
+]
+
+{ #category : #accessing }
+OgMunis >> objectsSearchFor: aSearch [
+	<gtSearch>
+	
+	^ aSearch list
+		priority: 300;
+		title: 'Objects';
+		items: [ self objects ];
+		matchSubstrings;
+		yourself
 ]
 
 { #category : #'as yet unclassified' }
@@ -121,6 +145,18 @@ OgMunis >> organizationsGtViewFor: aView [
 			text: #description.
 ]
 
+{ #category : #accessing }
+OgMunis >> organizationsSearchFor: aSearch [
+	<gtSearch>
+	
+	^ aSearch list
+		priority: 200;
+		title: 'Organizations';
+		items: [ self organizations ];
+		matchSubstrings;
+		yourself
+]
+
 { #category : #'as yet unclassified' }
 OgMunis >> projectWithCode: aString [ 
 	
@@ -135,4 +171,16 @@ OgMunis >> projects [
 { #category : #accessing }
 OgMunis >> projects: anObject [
 	projects := anObject
+]
+
+{ #category : #accessing }
+OgMunis >> projectsSearchFor: aSearch [
+	<gtSearch>
+	
+	^ aSearch list
+		priority: 400;
+		title: 'Projects';
+		items: [ self projects ];
+		matchSubstrings;
+		yourself
 ]
