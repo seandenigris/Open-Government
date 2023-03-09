@@ -10,6 +10,21 @@ Class {
 	#category : #'OpenGovernment-Munis'
 }
 
+{ #category : #accessing }
+OgMunisAccount class >> exportToCSVAllAccounts: aCollection [
+
+	| destination |
+	destination := FileSystem memory / ('account-export-', DateAndTime now asString asFilename), 'csv'.
+	
+	destination writeStreamDo: [ :str |
+		(NeoCSVWriter on: str)
+			addField: [ :acc | acc object displayString ];
+			addField: [ :acc | acc projectDisplayString ];
+			nextPutAll: aCollection ].
+			
+	^ destination
+]
+
 { #category : #'as yet unclassified' }
 OgMunisAccount >> addBudgetLine: anOgMunisBudgetLine [ 
 	

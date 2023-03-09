@@ -30,14 +30,5 @@ OgMunisOrganization >> accountsGtViewFor: aView [
 { #category : #accessing }
 OgMunisOrganization >> exportAccountsToCSV [
 
-	| destination |
-	destination := FileSystem memory / self code asString.
-	
-	destination writeStreamDo: [ :str |
-		(NeoCSVWriter on: str)
-			addField: [ :acc | acc object displayString ];
-			addField: [ :acc | acc projectDisplayString ];
-			nextPutAll: self accounts ].
-			
-	^ destination
+	^ OgMunisAccount exportToCSVAllAccounts: self accounts
 ]
