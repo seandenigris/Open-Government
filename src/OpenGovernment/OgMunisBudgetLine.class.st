@@ -30,6 +30,16 @@ OgMunisBudgetLine class >> stringFromMoney: aMeasure [
 ]
 
 { #category : #accessing }
+OgMunisBudgetLine >> actual [
+	^ actual
+]
+
+{ #category : #accessing }
+OgMunisBudgetLine >> actual: anObject [
+	actual := anObject
+]
+
+{ #category : #accessing }
 OgMunisBudgetLine >> actualDescription [
 	<magritteDescription>
 	
@@ -38,6 +48,16 @@ OgMunisBudgetLine >> actualDescription [
 		csvFieldName: 'Actual';
 		csvReader: [ :str | self class moneyFromString: str ];
 		yourself
+]
+
+{ #category : #accessing }
+OgMunisBudgetLine >> available [
+	^ available
+]
+
+{ #category : #accessing }
+OgMunisBudgetLine >> available: anObject [
+	available := anObject
 ]
 
 { #category : #accessing }
@@ -52,6 +72,16 @@ OgMunisBudgetLine >> availableDescription [
 ]
 
 { #category : #accessing }
+OgMunisBudgetLine >> encumbrances [
+	^ encumbrances
+]
+
+{ #category : #accessing }
+OgMunisBudgetLine >> encumbrances: anObject [
+	encumbrances := anObject
+]
+
+{ #category : #accessing }
 OgMunisBudgetLine >> encumbrancesDescription [
 	<magritteDescription>
 	
@@ -60,6 +90,16 @@ OgMunisBudgetLine >> encumbrancesDescription [
 		csvFieldName: 'Encumbrances';
 		csvReader: [ :str | self class moneyFromString: str ];
 		yourself
+]
+
+{ #category : #accessing }
+OgMunisBudgetLine >> original [
+	^ original
+]
+
+{ #category : #accessing }
+OgMunisBudgetLine >> original: anObject [
+	original := anObject
 ]
 
 { #category : #accessing }
@@ -84,11 +124,31 @@ OgMunisBudgetLine >> percentUsed [
 { #category : #accessing }
 OgMunisBudgetLine >> percentUsedString [
 
+	| fractionPart roundedFractionPart digitsRemaining suffix |
 	^ String streamContents: [ :str |
 		str << self percentUsed integerPart asString.
-		self percentUsed fractionPart = 0 ifFalse: [ 
-			str << $. << ((self percentUsed fractionPart * 100) rounded asString first: 2) ].
+		fractionPart := self percentUsed fractionPart.
+		fractionPart = 0 ifFalse: [ 
+			str << $..
+			roundedFractionPart := (self percentUsed fractionPart * 100) rounded.
+			digitsRemaining := roundedFractionPart < 10 
+				ifTrue: [ 
+					str << $0.
+					1 ]
+				ifFalse: [ 2 ].
+			suffix := roundedFractionPart asString first: digitsRemaining.
+			str << suffix ].
 		str << $% ]
+]
+
+{ #category : #accessing }
+OgMunisBudgetLine >> revised [
+	^ revised
+]
+
+{ #category : #accessing }
+OgMunisBudgetLine >> revised: anObject [
+	revised := anObject
 ]
 
 { #category : #accessing }

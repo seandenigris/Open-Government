@@ -87,6 +87,26 @@ OgMunisAccount >> gtDisplayOn: aStream [
 ]
 
 { #category : #accessing }
+OgMunisAccount >> object [
+	^ object
+]
+
+{ #category : #accessing }
+OgMunisAccount >> object: anObject [
+	object := anObject
+]
+
+{ #category : #accessing }
+OgMunisAccount >> organization [
+	^ organization
+]
+
+{ #category : #accessing }
+OgMunisAccount >> organization: anObject [
+	organization := anObject
+]
+
+{ #category : #accessing }
 OgMunisAccount >> printOn: aStream [
 
 	self displayStringOn: aStream.
@@ -94,6 +114,16 @@ OgMunisAccount >> printOn: aStream [
 	aStream nextPutAll: ' ('.
 	super printOn: aStream.
 	aStream nextPutAll: ')'.
+]
+
+{ #category : #accessing }
+OgMunisAccount >> project [
+	^ project
+]
+
+{ #category : #accessing }
+OgMunisAccount >> project: anObject [
+	project := anObject
 ]
 
 { #category : #accessing }
