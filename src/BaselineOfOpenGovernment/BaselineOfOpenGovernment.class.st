@@ -12,6 +12,8 @@ BaselineOfOpenGovernment >> baseline: spec [
 		spec
 			baseline: 'ExternalWebBrowser' with: [
 				spec repository: 'github://seandenigris/Pharo-Web-Browser' ];
+			baseline: 'LivingLibrary' with: [
+				spec repository: 'github://seandenigris/Living-Library' ];
 			baseline: 'Magritte' with: [
 				spec repository: 'github://seandenigris/Magritte' ];
 			baseline: 'Mocketry' with: [
@@ -23,5 +25,5 @@ BaselineOfOpenGovernment >> baseline: spec [
 			baseline: 'SimplePersistence' with: [
 				spec repository: 'github://seandenigris/Simple-Persistence' ].
 		spec package: #OpenGovernment with: [
-				spec requires: #('ExternalWebBrowser' 'Mocketry' 'MyPeople' 'PharoEnhancements' 'SimplePersistence'). ]. ]
+				spec requires: #('ExternalWebBrowser' 'LivingLibrary' 'Mocketry' 'MyPeople' 'PharoEnhancements' 'SimplePersistence'). ]. ]
 ]
