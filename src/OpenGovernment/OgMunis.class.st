@@ -78,6 +78,7 @@ OgMunis >> accountsSearchFor: aSearch [
 		priority: 100;
 		title: 'Accounts';
 		items: [ self accounts ];
+		itemName: #displayString;
 		matchSubstrings;
 		yourself
 ]
@@ -100,6 +101,21 @@ OgMunis >> objects [
 { #category : #accessing }
 OgMunis >> objects: anObject [
 	objects := anObject
+]
+
+{ #category : #accessing }
+OgMunis >> objectsGtViewFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Objects';
+		priority: 60;
+		items: [ self objects ];
+		actionUpdateButtonTooltip: 'Update item list';
+		column: 'Code' 
+			text: #code
+			width: 45;
+		column: 'Description' 
+			text: #description.
 ]
 
 { #category : #accessing }
