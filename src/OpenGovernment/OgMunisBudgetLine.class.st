@@ -118,7 +118,7 @@ OgMunisBudgetLine >> percentUsed [
 	
 	self revised = 0 ifTrue: [ ^ 0 ].
 
-	^ (self actual + self encumbrances) / self revised
+	^ (self actual + self encumbrances) / self revised * 100
 ]
 
 { #category : #accessing }
