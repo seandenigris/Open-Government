@@ -45,7 +45,7 @@ OgMunisBudgetLine >> actualDescription [
 	
 	^ MANumberDescription new
 		accessor: #actual;
-		csvFieldName: 'Actual';
+		csvFieldName: 'ACTUAL';
 		csvReader: [ :str | self class moneyFromString: str ];
 		yourself
 ]
@@ -66,7 +66,7 @@ OgMunisBudgetLine >> availableDescription [
 	
 	^ MANumberDescription new
 		accessor: #available;
-		csvFieldName: 'Available';
+		csvFieldName: 'AVAILABLE';
 		csvReader: [ :str | self class moneyFromString: str ];
 		yourself
 ]
@@ -87,7 +87,7 @@ OgMunisBudgetLine >> encumbrancesDescription [
 	
 	^ MANumberDescription new
 		accessor: #encumbrances;
-		csvFieldName: 'Encumbrances';
+		csvFieldName: 'ENCUMBRANCES';
 		csvReader: [ :str | self class moneyFromString: str ];
 		yourself
 ]
@@ -108,7 +108,7 @@ OgMunisBudgetLine >> originalDescription [
 	
 	^ MANumberDescription new
 		accessor: #original;
-		csvFieldName: 'Original Budget';
+		csvFieldName: 'ORIGINAL BUDGET';
 		csvReader: [ :str | self class moneyFromString: str ];
 		yourself
 ]
@@ -157,7 +157,7 @@ OgMunisBudgetLine >> revisedDescription [
 	
 	^ MANumberDescription new
 		accessor: #revised;
-		csvFieldName: 'Revised Budget';
+		csvFieldName: 'REVISED BUDGET';
 		csvReader: [ :str | self class moneyFromString: str ];
 		yourself
 ]
