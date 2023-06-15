@@ -26,7 +26,7 @@ OgMunisBudgetLine class >> stringFromMoney: aMeasure [
 	^ String streamContents: [ :str |
 		aMeasure amount < 0 ifTrue: [ 
 			str << $- ].
-		str << $$ << aMeasure amount rounded asStringWithCommas ]
+		str << $$ << aMeasure amount abs rounded asStringWithCommas ]
 ]
 
 { #category : #accessing }
