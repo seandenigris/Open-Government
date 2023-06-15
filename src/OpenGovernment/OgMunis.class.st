@@ -122,12 +122,12 @@ OgMunis >> objectWithCode: aString [
 
 { #category : #accessing }
 OgMunis >> objects [
-	^ objects
+	^ allObjects select: [ :obj | self accounts anySatisfy: [ :act | act object = obj ] ]
 ]
 
 { #category : #accessing }
 OgMunis >> objects: anObject [
-	objects := anObject
+	allObjects := anObject
 ]
 
 { #category : #accessing }
