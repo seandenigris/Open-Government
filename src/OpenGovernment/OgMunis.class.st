@@ -101,6 +101,19 @@ OgMunis >> accountsSearchFor: aSearch [
 ]
 
 { #category : #accessing }
+OgMunis >> forcePullAccountsFromCSV: aFileReference [
+
+	| latestAccounts |
+	latestAccounts := OgMunisAccountImporter new
+		source: aFileReference;
+		municipality: self municipality;
+		currentYear: 2022;
+		execute.
+	
+	self accounts: latestAccounts.
+]
+
+{ #category : #accessing }
 OgMunis >> importAccountsFromCSV: aResourceable [
 ]
 
