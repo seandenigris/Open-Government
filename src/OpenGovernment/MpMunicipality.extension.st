@@ -4,4 +4,6 @@ Extension { #name : #MpMunicipality }
 MpMunicipality >> munis [
 
 	^ OgMunis uniqueInstance
+		municipality: self;
+		yourself
 ]

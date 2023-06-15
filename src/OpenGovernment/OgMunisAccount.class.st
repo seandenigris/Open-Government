@@ -5,7 +5,8 @@ Class {
 		'organization',
 		'object',
 		'project',
-		'budgetLines'
+		'budgetLines',
+		'municipality'
 	],
 	#category : #'OpenGovernment-Munis'
 }
@@ -23,6 +24,14 @@ OgMunisAccount class >> exportToCSVAllAccounts: aCollection [
 			nextPutAll: aCollection ].
 			
 	^ destination
+]
+
+{ #category : #accessing }
+OgMunisAccount class >> ofMunicipality: anMpMunicipality [
+
+	^ self new
+		municipality: anMpMunicipality;
+		yourself
 ]
 
 { #category : #'as yet unclassified' }
