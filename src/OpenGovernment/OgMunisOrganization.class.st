@@ -32,3 +32,33 @@ OgMunisOrganization >> exportAccountsToCSV [
 
 	^ OgMunisAccount exportToCSVAllAccounts: self accounts
 ]
+
+{ #category : #accessing }
+OgMunisOrganization >> objectsGtViewFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Objects';
+		priority: 60;
+		items: [ self objects asSortedCollection: #code ascending ];
+		actionUpdateButtonTooltip: 'Update item list';
+		column: 'Code' 
+			text: #code
+			width: 45;
+		column: 'Description' 
+			text: #description.
+]
+
+{ #category : #accessing }
+OgMunisOrganization >> projectsGtViewFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Projects';
+		priority: 70;
+		items: [ self projects asSortedCollection: #code ascending ];
+		actionUpdateButtonTooltip: 'Update item list';
+		column: 'Code' 
+			text: #code
+			width: 45;
+		column: 'Description' 
+			text: #description.
+]

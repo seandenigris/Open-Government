@@ -31,8 +31,9 @@ Class {
 	#instVars : [
 		'accounts',
 		'organizations',
-		'objects',
-		'projects'
+		'projects',
+		'municipality',
+		'allObjects'
 	],
 	#classVars : [
 		'UniqueInstance'
@@ -68,6 +69,22 @@ OgMunis >> accounts [
 { #category : #accessing }
 OgMunis >> accounts: anObject [
 	accounts := anObject
+]
+
+{ #category : #accessing }
+OgMunis >> accountsGtViewFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Accounts';
+		priority: 50;
+		items: [ self accounts ];
+		actionUpdateButtonTooltip: 'Update item list';
+		column: 'Account' 
+			text: #displayString
+			width: 500;
+			withHorizontalScrolling";
+		column: 'Description' 
+			text: #description".
 ]
 
 { #category : #accessing }
@@ -187,6 +204,21 @@ OgMunis >> projects [
 { #category : #accessing }
 OgMunis >> projects: anObject [
 	projects := anObject
+]
+
+{ #category : #accessing }
+OgMunis >> projectsGtViewFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Projects';
+		priority: 70;
+		items: [ self projects ];
+		actionUpdateButtonTooltip: 'Update item list';
+		column: 'Code' 
+			text: #code
+			width: 45;
+		column: 'Description' 
+			text: #description.
 ]
 
 { #category : #accessing }
