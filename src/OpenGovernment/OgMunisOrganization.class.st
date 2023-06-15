@@ -34,6 +34,12 @@ OgMunisOrganization >> exportAccountsToCSV [
 ]
 
 { #category : #accessing }
+OgMunisOrganization >> objects [
+
+	^ self accounts collectAsSet: #object
+]
+
+{ #category : #accessing }
 OgMunisOrganization >> objectsGtViewFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -46,6 +52,14 @@ OgMunisOrganization >> objectsGtViewFor: aView [
 			width: 45;
 		column: 'Description' 
 			text: #description.
+]
+
+{ #category : #accessing }
+OgMunisOrganization >> projects [
+
+	^ self accounts asSet
+		collect: #project
+		thenSelect: #isNotNil
 ]
 
 { #category : #accessing }
