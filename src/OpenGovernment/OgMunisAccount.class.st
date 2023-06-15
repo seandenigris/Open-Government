@@ -111,6 +111,16 @@ OgMunisAccount >> gtDisplayOn: aStream [
 ]
 
 { #category : #accessing }
+OgMunisAccount >> municipality [
+	^ municipality
+]
+
+{ #category : #accessing }
+OgMunisAccount >> municipality: anObject [
+	municipality := anObject
+]
+
+{ #category : #accessing }
 OgMunisAccount >> object [
 	^ object
 ]
@@ -121,6 +131,16 @@ OgMunisAccount >> object: anObject [
 ]
 
 { #category : #accessing }
+OgMunisAccount >> objectDescription [
+	<magritteDescription>
+	
+	^ MAToOneRelationDescription new
+		accessor: #object;
+		classes: { OgMunisObject };
+		yourself
+]
+
+{ #category : #accessing }
 OgMunisAccount >> organization [
 	^ organization
 ]
@@ -128,6 +148,16 @@ OgMunisAccount >> organization [
 { #category : #accessing }
 OgMunisAccount >> organization: anObject [
 	organization := anObject
+]
+
+{ #category : #accessing }
+OgMunisAccount >> organizationDescription [
+	<magritteDescription>
+	
+	^ MAToOneRelationDescription new
+		accessor: #organization;
+		classes: { OgMunisOrganization };
+		yourself
 ]
 
 { #category : #accessing }
@@ -148,6 +178,16 @@ OgMunisAccount >> project [
 { #category : #accessing }
 OgMunisAccount >> project: anObject [
 	project := anObject
+]
+
+{ #category : #accessing }
+OgMunisAccount >> projectDescription [
+	<magritteDescription>
+	
+	^ MAToOneRelationDescription new
+		accessor: #project;
+		classes: { OgMunisProject };
+		yourself
 ]
 
 { #category : #accessing }
