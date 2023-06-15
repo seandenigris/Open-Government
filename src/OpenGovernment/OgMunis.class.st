@@ -104,6 +104,16 @@ OgMunis >> accountsSearchFor: aSearch [
 OgMunis >> importAccountsFromCSV: aResourceable [
 ]
 
+{ #category : #accessing }
+OgMunis >> municipality [
+	^ municipality
+]
+
+{ #category : #accessing }
+OgMunis >> municipality: anObject [
+	municipality := anObject
+]
+
 { #category : #'as yet unclassified' }
 OgMunis >> objectWithCode: aString [ 
 	
