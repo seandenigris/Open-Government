@@ -146,16 +146,46 @@ OgMunis >> objects: anObject [
 { #category : #accessing }
 OgMunis >> objectsGtViewFor: aView [
 	<gtView>
-	^ aView columnedList
+	
+	| typeSwitch descriptionText codeText children |
+	typeSwitch := [ :anObject :objectBlock :accountBlock |
+		(anObject isKindOf: OgMunisObject)
+			ifTrue: objectBlock
+			ifFalse: accountBlock ].
+			
+	children := [ :anObject |
+		typeSwitch
+			value: anObject
+			value: [ self accounts select: [ :act | act object = anObject ] ]
+			value: [ { } ] ].
+			
+	codeText := [ :anObject |
+		typeSwitch
+			value: anObject
+			value: [ anObject code ]
+			value: [ anObject displayString ] ].
+			
+	descriptionText := [ :anObject |
+		typeSwitch
+			value: anObject
+			value: [ anObject description ]
+			value: [ | line |
+				line := anObject budgetLines first.
+				String streamContents: [ :str | OgMunisBudgetLine new magritteDescription children do: [ :desc |
+		str << (desc readToString: line) ]
+		separatedBy: [ str << ' | ' ] ] ] ].
+	
+	^ aView columnedTree
 		title: 'Objects';
 		priority: 60;
-		items: [ self objects ];
+		items: [ self objects asSortedCollection: #code ascending ];
+		children: children;
 		actionUpdateButtonTooltip: 'Update item list';
 		column: 'Code' 
-			text: #code
-			width: 45;
+			text: codeText
+			width: 100;
 		column: 'Description' 
-			text: #description.
+			text: descriptionText.
 ]
 
 { #category : #accessing }

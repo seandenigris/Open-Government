@@ -53,34 +53,17 @@ OgMunisAccount >> budgetLines: anObject [
 { #category : #accessing }
 OgMunisAccount >> budgetLinesGtViewFor: aView [
 	<gtView>
-	^ aView columnedList
+	
+	| result |
+	result := aView columnedList
 		title: 'Budget';
 		priority: 50;
-		items: [ self budgetLines ];
-		column: 'Year' 
-			text: [ :line | 
-				line year asString ]
-			width: 45;
-		column: 'Available' 
-			text: [ :line | 
-				line class stringFromMoney: line available ]
-			width: 100;
-		column: 'Opening' 
-			text: [ :line | 
-				line class stringFromMoney: line revised ]
-			width: 100;
-		column: '% Used' 
-			text: [ :line | 
-				line percentUsedString ]
-			width: 100;
-		column: 'Spent' 
-			text: [ :line | 
-				line class stringFromMoney: line actual ]
-			width: 100;
-		column: 'Encumbrances' 
-			text: [ :line | 
-				line class stringFromMoney: line encumbrances ]
-			width: 100.
+		items: [ self budgetLines ].
+		
+	OgMunisBudgetLine new magritteDescription do: [ :desc |
+		result column: desc label text: [ :line | desc readToString: line ] ].
+				
+	^ result
 ]
 
 { #category : #accessing }
