@@ -104,6 +104,19 @@ OgMunisAccount >> municipality: anObject [
 ]
 
 { #category : #accessing }
+OgMunisAccount >> number [
+
+	^ String streamContents: [ :aStream |
+		aStream
+			nextPutAll: self organization code;
+			nextPut: $-;
+			nextPutAll: self object code.
+			
+		self project ifNotNil: [ :proj |
+			aStream << '-' << self project code ] ]
+]
+
+{ #category : #accessing }
 OgMunisAccount >> object [
 	^ object
 ]
