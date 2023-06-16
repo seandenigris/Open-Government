@@ -43,9 +43,8 @@ OgMunisBudgetLine >> actual: anObject [
 OgMunisBudgetLine >> actualDescription [
 	<magritteDescription>
 	
-	^ MANumberDescription new
+	^ OgMunisMAMoneyDescription new
 		accessor: #actual;
-		csvFieldName: 'ACTUAL';
 		csvReader: [ :str | self class moneyFromString: str ];
 		yourself
 ]
@@ -64,9 +63,8 @@ OgMunisBudgetLine >> available: anObject [
 OgMunisBudgetLine >> availableDescription [
 	<magritteDescription>
 	
-	^ MANumberDescription new
+	^ OgMunisMAMoneyDescription new
 		accessor: #available;
-		csvFieldName: 'AVAILABLE';
 		csvReader: [ :str | self class moneyFromString: str ];
 		yourself
 ]
@@ -85,9 +83,8 @@ OgMunisBudgetLine >> encumbrances: anObject [
 OgMunisBudgetLine >> encumbrancesDescription [
 	<magritteDescription>
 	
-	^ MANumberDescription new
+	^ OgMunisMAMoneyDescription new
 		accessor: #encumbrances;
-		csvFieldName: 'ENCUMBRANCES';
 		csvReader: [ :str | self class moneyFromString: str ];
 		yourself
 ]
@@ -106,9 +103,8 @@ OgMunisBudgetLine >> original: anObject [
 OgMunisBudgetLine >> originalDescription [
 	<magritteDescription>
 	
-	^ MANumberDescription new
+	^ OgMunisMAMoneyDescription new
 		accessor: #original;
-		csvFieldName: 'ORIGINAL BUDGET';
 		csvReader: [ :str | self class moneyFromString: str ];
 		yourself
 ]
@@ -155,9 +151,8 @@ OgMunisBudgetLine >> revised: anObject [
 OgMunisBudgetLine >> revisedDescription [
 	<magritteDescription>
 	
-	^ MANumberDescription new
+	^ OgMunisMAMoneyDescription new
 		accessor: #revised;
-		csvFieldName: 'REVISED BUDGET';
 		csvReader: [ :str | self class moneyFromString: str ];
 		yourself
 ]
