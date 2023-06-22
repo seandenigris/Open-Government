@@ -5,8 +5,8 @@ Class {
 }
 
 { #category : #visiting }
-OgMunisMAMoneyStringWriter >> visitMoneyDescription: aMeasure [
+OgMunisMAMoneyStringWriter >> visitMoneyDescription: aDescription [
 	 
-	aMeasure amount < 0 ifTrue: [ self stream << $- ].
-	self stream << $$ << aMeasure amount abs rounded asStringWithCommas
+	self object amount < 0 ifTrue: [ self stream << $- ].
+	self stream << $$ << self object amount abs rounded asStringWithCommas
 ]
