@@ -13,7 +13,9 @@ Class {
 { #category : #accessing }
 OgCapitalProject >> = rhs [
 
-	^ self description = rhs description and: [ self number = rhs number ]
+	self species = rhs species ifFalse: [ ^ false ].
+	
+	^ self title = rhs title and: [ self number = rhs number ]
 ]
 
 { #category : #accessing }
@@ -47,13 +49,6 @@ OgCapitalProject >> descriptionDescription [
 ]
 
 { #category : #accessing }
-OgCapitalProject >> displayStringOn: aStream [
-
-	self description ifNotNil: [ :desc |
-		aStream nextPutAll: desc ]
-]
-
-{ #category : #accessing }
 OgCapitalProject >> expenses [
 	^ expenses ifNil: [ expenses := OrderedCollection new ]
 ]
@@ -70,10 +65,10 @@ OgCapitalProject >> expensesGtViewFor: aView [
 	| result |
 	result := aView columnedList
 		title: 'Expenses';
-		priority: 50;
+		priority: 10;
 		items: [ self expenses ].
 		
-	NdCapitalExpense new magritteDescription do: [ :desc |
+	OgCapitalExpense magritteTemplate magritteDescription do: [ :desc |
 		result column: desc label text: [ :line | desc readToString: line ] ].
 				
 	^ result
