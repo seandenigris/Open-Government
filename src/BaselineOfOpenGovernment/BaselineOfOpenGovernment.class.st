@@ -23,7 +23,9 @@ BaselineOfOpenGovernment >> baseline: spec [
 			baseline: 'PharoEnhancements' with: [
 				spec repository: 'github://seandenigris/Pharo-Enhancements' ];
 			baseline: 'SimplePersistence' with: [
-				spec repository: 'github://seandenigris/Simple-Persistence' ].
+				spec repository: 'github://seandenigris/Simple-Persistence' ];
+			baseline: 'TheProjectProject' with: [
+				spec repository: 'github://seandenigris/The-Project-Project' ].
 		spec package: #OpenGovernment with: [
-				spec requires: #('ExternalWebBrowser' 'LivingLibrary' 'Mocketry' 'MyPeople' 'PharoEnhancements' 'SimplePersistence'). ]. ]
+				spec requires: #('ExternalWebBrowser' 'LivingLibrary' 'Mocketry' 'MyPeople' 'PharoEnhancements' 'SimplePersistence' 'TheProjectProject'). ]. ]
 ]
