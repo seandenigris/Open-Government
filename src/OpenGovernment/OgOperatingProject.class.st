@@ -2,7 +2,8 @@ Class {
 	#name : #OgOperatingProject,
 	#superclass : #PpProject,
 	#instVars : [
-		'budgetRequests'
+		'budgetRequests',
+		'purchaseOrders'
 	],
 	#classVars : [
 		'Parent'
@@ -45,4 +46,14 @@ OgOperatingProject >> importDescription [
 		action: #import;
 		enableBlock: [ :proj | self class parent isNotNil ];
 		yourself
+]
+
+{ #category : #accessing }
+OgOperatingProject >> purchaseOrders [
+	^ purchaseOrders ifNil: [ purchaseOrders := OrderedCollection new ]
+]
+
+{ #category : #accessing }
+OgOperatingProject >> purchaseOrders: anObject [
+	purchaseOrders := anObject
 ]
