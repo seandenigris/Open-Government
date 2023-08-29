@@ -1,7 +1,7 @@
 Class {
 	#name : #OpenGovernmentDB,
 	#superclass : #SpFileDatabase,
-	#category : 'OpenGovernment-Persistence'
+	#category : #'OpenGovernment-Persistence'
 }
 
 { #category : #accessing }
@@ -16,5 +16,6 @@ OpenGovernmentDB class >> schema [
 	^ { 
 		OgBill.
 		OgCoogOpinion.
-		OgMunis }.
+		OgMunis.
+		OgOperatingProject }.
 ]

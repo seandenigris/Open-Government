@@ -21,6 +21,16 @@ OgOperatingProject class >> parent: anObject [
 	Parent := anObject
 ]
 
+{ #category : #persistence }
+OgOperatingProject class >> restoreFrom: anObject [
+	Parent := anObject
+]
+
+{ #category : #persistence }
+OgOperatingProject class >> spData [
+	^ Parent
+]
+
 { #category : #accessing }
 OgOperatingProject >> accounts [
 
