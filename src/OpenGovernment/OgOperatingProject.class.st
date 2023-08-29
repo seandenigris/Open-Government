@@ -22,6 +22,26 @@ OgOperatingProject class >> parent: anObject [
 ]
 
 { #category : #accessing }
+OgOperatingProject >> accounts [
+
+	^ self budgetRequests collect: #account
+]
+
+{ #category : #accessing }
+OgOperatingProject >> accountsGtViewFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Accounts';
+		priority: 40;
+		items: [ self accounts ];
+		actionUpdateButtonTooltip: 'Update item list';
+		column: 'Account' 
+			text: #displayString
+			width: 500;
+		inspectButtonFor: [ self accounts ].
+]
+
+{ #category : #accessing }
 OgOperatingProject >> budgetRequests [
 	^ budgetRequests ifNil: [ budgetRequests := OrderedCollection new ]
 ]
