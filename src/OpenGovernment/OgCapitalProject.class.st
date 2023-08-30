@@ -1,8 +1,7 @@
 Class {
 	#name : #OgCapitalProject,
-	#superclass : #Object,
+	#superclass : #PpProject,
 	#instVars : [
-		'description',
 		'number',
 		'expenses',
 		'currentPrice'
@@ -26,26 +25,6 @@ OgCapitalProject >> currentPrice [
 { #category : #accessing }
 OgCapitalProject >> currentPrice: anObject [
 	currentPrice := anObject
-]
-
-{ #category : #accessing }
-OgCapitalProject >> description [
-	^ description
-]
-
-{ #category : #accessing }
-OgCapitalProject >> description: anObject [
-	description := anObject
-]
-
-{ #category : #accessing }
-OgCapitalProject >> descriptionDescription [
-	<magritteDescription>
-	
-	^ MAStringDescription new
-		accessor: #description;
-		priority: 100;
-		yourself
 ]
 
 { #category : #accessing }
