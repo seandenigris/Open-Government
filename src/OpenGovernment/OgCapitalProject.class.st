@@ -56,7 +56,7 @@ OgCapitalProject >> expensesGtViewFor: aView [
 { #category : #accessing }
 OgCapitalProject >> hash [
 
-	^ self description hash bitXor: self number hash
+	^ self title hash bitXor: self number hash
 ]
 
 { #category : #accessing }
