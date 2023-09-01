@@ -62,6 +62,17 @@ OgOperatingProject >> budgetRequests: anObject [
 ]
 
 { #category : #accessing }
+OgOperatingProject >> budgetRequestsDescription [
+	<magritteDescription>
+	
+	^ MAToManyRelationDescription new
+		accessor: #budgetRequests;
+		gtSearchDelegateTo: (MessageSend receiver: self selector: #munis) message: #budgetRequestsSearchFor;
+		classes: OgMunisBudgetAccountRequest withAllSubclasses;
+		yourself
+]
+
+{ #category : #accessing }
 OgOperatingProject >> import [
 
 	self class parent ensureChild: self
@@ -76,6 +87,12 @@ OgOperatingProject >> importDescription [
 		action: #import;
 		enableBlock: [ :proj | self class parent isNotNil ];
 		yourself
+]
+
+{ #category : #accessing }
+OgOperatingProject >> munis [
+
+	^ OgMunis uniqueInstance
 ]
 
 { #category : #accessing }
