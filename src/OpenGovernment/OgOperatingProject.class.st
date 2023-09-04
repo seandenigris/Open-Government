@@ -104,3 +104,14 @@ OgOperatingProject >> purchaseOrders [
 OgOperatingProject >> purchaseOrders: anObject [
 	purchaseOrders := anObject
 ]
+
+{ #category : #accessing }
+OgOperatingProject >> purchaseOrdersDescription [
+	<magritteDescription>
+	
+	^ MAToManyRelationDescription new
+		accessor: #purchaseOrders;
+		gtSearchDelegateTo: (MessageSend receiver: self selector: #munis) message: #purchaseOrdersSearchFor:;
+		classes: OgMunisPurchaseOrder withAllSubclasses;
+		yourself
+]
