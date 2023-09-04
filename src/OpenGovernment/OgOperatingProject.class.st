@@ -52,6 +52,13 @@ OgOperatingProject >> accountsGtViewFor: aView [
 ]
 
 { #category : #accessing }
+OgOperatingProject >> addBudgetRequest: aBudgetRequest [
+
+	aBudgetRequest ppProjectBasic: self.
+	^ self budgetRequests add: aBudgetRequest.
+]
+
+{ #category : #accessing }
 OgOperatingProject >> budgetRequests [
 	^ budgetRequests ifNil: [ budgetRequests := OrderedCollection new ]
 ]
