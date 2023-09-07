@@ -103,6 +103,12 @@ OgOperatingProject >> munis [
 ]
 
 { #category : #accessing }
+OgOperatingProject >> ogIsBudgetary [
+
+	^ true
+]
+
+{ #category : #accessing }
 OgOperatingProject >> purchaseOrders [
 	^ purchaseOrders ifNil: [ purchaseOrders := OrderedCollection new ]
 ]

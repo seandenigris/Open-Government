@@ -79,6 +79,12 @@ OgCapitalProject >> numberDescription [
 		yourself
 ]
 
+{ #category : #testing }
+OgCapitalProject >> ogIsBudgetary [
+
+	^ true
+]
+
 { #category : #accessing }
 OgCapitalProject >> printOn: aStream [
 
