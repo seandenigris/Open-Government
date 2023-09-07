@@ -32,9 +32,20 @@ OgOperatingProject class >> spData [
 ]
 
 { #category : #accessing }
+OgOperatingProject >> account: aMunisAccount [
+
+	self
+		propertyAt: #munisAccount
+		putRemovingNil: aMunisAccount
+]
+
+{ #category : #accessing }
 OgOperatingProject >> accounts [
 
-	^ self budgetRequests collect: #account
+	| result |
+	result := (self budgetRequests collect: #account) asIdentitySet.
+	self rootOperatingChildren do: [ :e | result addAll: e accounts ].
+	^ result
 ]
 
 { #category : #accessing }
@@ -42,13 +53,13 @@ OgOperatingProject >> accountsGtViewFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Accounts';
-		priority: 40;
-		items: [ self accounts ];
+		priority: 9;
+		items: [ self accounts asOrderedCollection ];
 		actionUpdateButtonTooltip: 'Update item list';
 		column: 'Account' 
 			text: #displayString
 			width: 500;
-		inspectButtonFor: [ self accounts ].
+		inspectButtonFor: [ self accounts asOrderedCollection ].
 ]
 
 { #category : #accessing }
@@ -56,6 +67,13 @@ OgOperatingProject >> addBudgetRequest: aBudgetRequest [
 
 	aBudgetRequest ppProjectBasic: self.
 	^ self budgetRequests add: aBudgetRequest.
+]
+
+{ #category : #accessing }
+OgOperatingProject >> addPurchaseOrder: aPurchaseOrder [
+
+	aPurchaseOrder ppProjectBasic: self.
+	^ self purchaseOrders add: aPurchaseOrder.
 ]
 
 { #category : #accessing }
@@ -77,6 +95,13 @@ OgOperatingProject >> budgetRequestsDescription [
 		gtSearchDelegateTo: (MessageSend receiver: self selector: #munis) message: #budgetRequestsSearchFor;
 		classes: OgMunisBudgetAccountRequest withAllSubclasses;
 		yourself
+]
+
+{ #category : #'GT Views' }
+OgOperatingProject >> budgetRequestsGtViewFor: aView [
+	<gtView>
+	^ (OgMunisBudgetAccountRequest gtViewOf: self for: aView)
+		priority: 7
 ]
 
 { #category : #accessing }
@@ -127,4 +152,16 @@ OgOperatingProject >> purchaseOrdersDescription [
 		gtSearchDelegateTo: (MessageSend receiver: self selector: #munis) message: #purchaseOrdersSearchFor:;
 		classes: OgMunisPurchaseOrder withAllSubclasses;
 		yourself
+]
+
+{ #category : #'GT Views' }
+OgOperatingProject >> purchaseOrdersGtViewFor: aView [
+	<gtView>
+	
+	^ OgMunisPurchaseOrder gtViewOn: self for: aView priority: 8
+]
+
+{ #category : #'as yet unclassified' }
+OgOperatingProject >> rootOperatingChildren [
+	^ self rootChildren select: #ogIsBudgetary
 ]
