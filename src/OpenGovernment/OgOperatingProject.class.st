@@ -55,7 +55,7 @@ OgOperatingProject >> accountsGtViewFor: aView [
 		title: 'Accounts';
 		priority: 9;
 		items: [ self accounts asOrderedCollection ];
-		actionUpdateButtonTooltip: 'Update item list';
+		actionUpdateButton;
 		column: 'Account' 
 			text: #displayString
 			width: 500;

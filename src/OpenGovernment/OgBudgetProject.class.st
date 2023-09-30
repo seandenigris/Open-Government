@@ -35,7 +35,7 @@ OgBudgetProject >> accountsGtViewFor: aView [
 		title: 'Accounts';
 		priority: 40;
 		items: [ self accounts ];
-		actionUpdateButtonTooltip: 'Update item list';
+		actionUpdateButton;
 		column: 'Account' 
 			text: #displayString
 			width: 500;
