@@ -10,6 +10,8 @@ BaselineOfOpenGovernment >> baseline: spec [
 
 	spec for: #'common' do: [
 		spec
+			baseline: 'DynabookFoundation' with: [
+				spec repository: 'github://seandenigris/Dynabook-Foundation' ];
 			baseline: 'ExternalWebBrowser' with: [
 				spec repository: 'github://seandenigris/Pharo-Web-Browser' ];
 			baseline: 'LivingLibrary' with: [
@@ -27,5 +29,5 @@ BaselineOfOpenGovernment >> baseline: spec [
 			baseline: 'TheProjectProject' with: [
 				spec repository: 'github://seandenigris/The-Project-Project' ].
 		spec package: #OpenGovernment with: [
-				spec requires: #('ExternalWebBrowser' 'LivingLibrary' 'Mocketry' 'MyPeople' 'PharoEnhancements' 'SimplePersistence' 'TheProjectProject'). ]. ]
+				spec requires: #('DynabookFoundation' 'ExternalWebBrowser' 'LivingLibrary' 'Mocketry' 'MyPeople' 'PharoEnhancements' 'SimplePersistence' 'TheProjectProject'). ]. ]
 ]
