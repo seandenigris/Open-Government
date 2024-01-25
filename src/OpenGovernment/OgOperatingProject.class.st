@@ -92,7 +92,7 @@ OgOperatingProject >> budgetRequestsDescription [
 	
 	^ MAToManyRelationDescription new
 		accessor: #budgetRequests;
-		gtSearchDelegateTo: (MessageSend receiver: self selector: #munis) message: #budgetRequestsSearchFor;
+		gtSearchDelegateTo: (MessageSend receiver: self selector: #munis) message: #budgetRequestsSearchFor:;
 		classes: OgMunisBudgetAccountRequest withAllSubclasses;
 		yourself
 ]
@@ -135,7 +135,7 @@ OgOperatingProject >> ogIsBudgetary [
 
 { #category : #accessing }
 OgOperatingProject >> purchaseOrders [
-	^ purchaseOrders ifNil: [ purchaseOrders := OrderedCollection new ]
+	^ self maLazyInstVarUsing: self purchaseOrdersDescription
 ]
 
 { #category : #accessing }
@@ -151,6 +151,7 @@ OgOperatingProject >> purchaseOrdersDescription [
 		accessor: #purchaseOrders;
 		gtSearchDelegateTo: (MessageSend receiver: self selector: #munis) message: #purchaseOrdersSearchFor:;
 		classes: OgMunisPurchaseOrder withAllSubclasses;
+		default: IdentitySet new;
 		yourself
 ]
 
