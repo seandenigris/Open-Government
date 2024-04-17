@@ -29,7 +29,8 @@ OgRequisition >> account [
 
 { #category : #accessing }
 OgRequisition >> account: anObject [
-	account := anObject
+	account := anObject.
+	self form account: anObject
 ]
 
 { #category : #accessing }
@@ -38,8 +39,9 @@ OgRequisition >> date [
 ]
 
 { #category : #accessing }
-OgRequisition >> date: anObject [
-	date := anObject
+OgRequisition >> date: aDate [
+	date := aDate.
+	self form date: aDate
 ]
 
 { #category : #accessing }
@@ -58,8 +60,19 @@ OgRequisition >> destination [
 ]
 
 { #category : #accessing }
-OgRequisition >> destination: anObject [
-	destination := anObject
+OgRequisition >> destination: aString [
+	destination := aString.
+	self form destination: aString
+]
+
+{ #category : #accessing }
+OgRequisition >> destinationDescription [
+	<magritteDescription>
+	
+	^ MASingleOptionDescription new
+		accessor: #destination;
+		options: self destinationOptions;
+		yourself
 ]
 
 { #category : #accessing }
@@ -79,7 +92,7 @@ OgRequisition >> newForm [
 	| copy |
 	copy := Tempfile named: 'Requisition ', Date today yyyymmdd, ' ', self project title, '.xlsx'.
 	self blankForm file copyTo: copy.
-	^ copy asRlResource
+	^ (self class formClass on: copy)
 		name: 'Requisition Form';
 		yourself
 ]
@@ -111,5 +124,6 @@ OgRequisition >> vendor [
 
 { #category : #accessing }
 OgRequisition >> vendor: anObject [
-	vendor := anObject
+	vendor := anObject.
+	self form vendor: anObject
 ]
