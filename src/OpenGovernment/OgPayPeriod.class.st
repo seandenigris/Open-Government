@@ -21,6 +21,11 @@ OgPayPeriod >> endDate [
 ]
 
 { #category : #accessing }
+OgPayPeriod >> endDate: aDate [
+	endDate := aDate translateToUTC
+]
+
+{ #category : #accessing }
 OgPayPeriod >> endDateDescription [
 	<magritteDescription>
 	
