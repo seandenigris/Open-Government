@@ -7,3 +7,11 @@ MpMunicipality >> munis [
 		municipality: self;
 		yourself
 ]
+
+{ #category : #'*OpenGovernment' }
+MpMunicipality >> payPeriods [
+
+	^ self
+		propertyAt: #payPeriods
+		ifAbsentPut: [ OrderedCollection new ]
+]
