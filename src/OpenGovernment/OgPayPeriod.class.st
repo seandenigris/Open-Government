@@ -48,3 +48,13 @@ OgPayPeriod >> payrollGtViewOn: aView [
 		inspectButtonFor: [ self payroll ];
 		yourself
 ]
+
+{ #category : #accessing }
+OgPayPeriod >> printOn: aStream [
+
+	aStream
+		nextPutAll: 'Pay period from ';
+		nextPutAll: self startDate mmddyyyy;
+		nextPutAll: ' to ';
+		nextPutAll: self endDate mmddyyyy
+]
