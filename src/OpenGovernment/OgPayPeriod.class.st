@@ -35,3 +35,16 @@ OgPayPeriod >> endDateDescription [
 		priority: 30;
 		yourself
 ]
+
+{ #category : #accessing }
+OgPayPeriod >> payrollGtViewOn: aView [
+	<gtView>
+	
+	^ aView forward
+		title: 'Payroll Detail';
+		priority: 75;
+		object: [ self payroll ];
+		view: #detailGtViewOn:;
+		inspectButtonFor: [ self payroll ];
+		yourself
+]
