@@ -58,3 +58,9 @@ OgPayPeriod >> printOn: aStream [
 		nextPutAll: ' to ';
 		nextPutAll: self endDate mmddyyyy
 ]
+
+{ #category : #accessing }
+OgPayPeriod >> timespan [
+
+	^ self startDate to: self endDate
+]
