@@ -5,5 +5,5 @@ PpProject >> requisition [
 
 	^ self
 		propertyAt: #requisition
-		ifAbsentPut: [ OgRequisition forProject: self ].
+		ifAbsentPut: [ OgRequisition forClient: self ].
 ]
