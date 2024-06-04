@@ -34,6 +34,25 @@ OgTravelRequest >> applicant: anObject [
 	applicant := anObject
 ]
 
+{ #category : #magritte }
+OgTravelRequest >> applicantDescription [
+	<magritteDescription>
+	
+	| searchSource |
+	searchSource := PeGtDelegatedSearch
+		to: self organization 
+		message: #affiliationsGtSearchFor:.
+		
+	^ MAToOneRelationDescription new
+		  accessor: #applicant;
+		  morphicClass: MADropListMorph;
+		  gtSearchSource: searchSource;
+		  classes: MpAffiliation withAllSubclasses;
+		  priority: 200;
+		  beRequired;
+		  yourself
+]
+
 { #category : #accessing }
 OgTravelRequest >> endDate [
 	^ endDate
