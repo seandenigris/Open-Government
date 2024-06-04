@@ -9,6 +9,14 @@ PpProject >> ogBidSpec [
 ]
 
 { #category : #'*OpenGovernment' }
+PpProject >> ogTravelRequest [
+
+	^ self
+		propertyAt: #travelRequest
+		ifAbsentPut: [ OgTravelRequest defaultClass forClient: self ].
+]
+
+{ #category : #'*OpenGovernment' }
 PpProject >> requisition [
 
 	^ self
