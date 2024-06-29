@@ -66,7 +66,7 @@ OgRequisition >> destinationDescription [
 
 { #category : #private }
 OgRequisition >> newFormFilename [
-	^ 'Requisition ' , Date today yyyymmdd , ' ' , self project title , '.xlsx'
+	^ 'Requisition ' , Date today yyyymmdd , ' ' , self client title , '.xlsx'
 ]
 
 { #category : #accessing }
