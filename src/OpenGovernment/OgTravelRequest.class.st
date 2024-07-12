@@ -107,13 +107,3 @@ OgTravelRequest >> startDate [
 OgTravelRequest >> startDate: anObject [
 	startDate := anObject
 ]
-
-{ #category : #accessing }
-OgTravelRequest >> travelMethodDescription [
-	"<magritteDescription>"
-	
-	^ MASingleOptionDescription new
-		accessor: #travelMethod;
-		options: self travelMethodOptions;
-		yourself
-]
