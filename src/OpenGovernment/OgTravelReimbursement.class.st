@@ -14,12 +14,6 @@ Class {
 }
 
 { #category : #accessing }
-OgTravelReimbursement class >> formClass [
-
-	^ NdTravelReimbursementForm
-]
-
-{ #category : #accessing }
 OgTravelReimbursement >> account [
 	^ account
 ]
