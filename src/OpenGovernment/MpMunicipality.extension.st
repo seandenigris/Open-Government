@@ -9,6 +9,12 @@ MpMunicipality >> munis [
 ]
 
 { #category : #'*OpenGovernment' }
+MpMunicipality >> payPeriodEnding: aDate [
+
+	^ self payPeriods detect: [ :period | period endDate = aDate translateToUTC ]
+]
+
+{ #category : #'*OpenGovernment' }
 MpMunicipality >> payPeriods [
 
 	^ self
