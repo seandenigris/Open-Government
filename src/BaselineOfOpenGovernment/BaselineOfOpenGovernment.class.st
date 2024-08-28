@@ -10,24 +10,24 @@ BaselineOfOpenGovernment >> baseline: spec [
 
 	spec for: #'common' do: [
 		spec
-			baseline: 'DynabookFoundation' with: [
+			baseline: #'DynabookFoundation' with: [
 				spec repository: 'github://seandenigris/Dynabook-Foundation' ];
-			baseline: 'ExternalWebBrowser' with: [
+			baseline: #'ExternalWebBrowser' with: [
 				spec repository: 'github://seandenigris/Pharo-Web-Browser' ];
-			baseline: 'LivingLibrary' with: [
+			baseline: #'LivingLibrary' with: [
 				spec repository: 'github://seandenigris/Living-Library' ];
-			baseline: 'Magritte' with: [
+			baseline: #'Magritte' with: [
 				spec repository: 'github://seandenigris/Magritte' ];
-			baseline: 'Mocketry' with: [
+			baseline: #'Mocketry' with: [
 				spec repository: 'github://dionisiydk/Mocketry' ];
-			baseline: 'MyPeople' with: [
+			baseline: #'MyPeople' with: [
 				spec repository: 'github://SeanDeNigris/My-People' ];
-			baseline: 'PharoEnhancements' with: [
+			baseline: #'PharoEnhancements' with: [
 				spec repository: 'github://seandenigris/Pharo-Enhancements' ];
-			baseline: 'SimplePersistence' with: [
+			baseline: #'SimplePersistence' with: [
 				spec repository: 'github://seandenigris/Simple-Persistence' ];
-			baseline: 'TheProjectProject' with: [
+			baseline: #'TheProjectProject' with: [
 				spec repository: 'github://seandenigris/The-Project-Project' ].
 		spec package: #OpenGovernment with: [
-				spec requires: #('DynabookFoundation' 'ExternalWebBrowser' 'LivingLibrary' 'Mocketry' 'MyPeople' 'PharoEnhancements' 'SimplePersistence' 'TheProjectProject'). ]. ]
+				spec requires: #(#'DynabookFoundation' #'ExternalWebBrowser' #'LivingLibrary' #'Mocketry' #'MyPeople' #'PharoEnhancements' #'SimplePersistence' #'TheProjectProject'). ]. ]
 ]
