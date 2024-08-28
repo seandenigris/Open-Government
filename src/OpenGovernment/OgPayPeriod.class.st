@@ -7,6 +7,15 @@ Class {
 	#category : #'OpenGovernment-Budgeting'
 }
 
+{ #category : #'as yet unclassified' }
+OgPayPeriod >> averageHourlyRateOfJobTitles: aCollection [ 
+	
+	| payrollLines rateSum |
+	payrollLines := self payroll scenarios select: [ :scen | aCollection includes: scen jobTitle ].
+	rateSum := payrollLines sum: [ :line | line hourlyRate ].
+	^ rateSum / payrollLines size
+]
+
 { #category : #accessing }
 OgPayPeriod >> displayStringOn: aStream [
 
