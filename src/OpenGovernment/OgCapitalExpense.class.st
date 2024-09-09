@@ -4,10 +4,34 @@ Class {
 	#instVars : [
 		'year',
 		'fundingSource',
-		'price'
+		'price',
+		'project',
+		'priority',
+		'contingency',
+		'quotedPrice'
 	],
 	#category : #'OpenGovernment-Budgeting'
 }
+
+{ #category : #accessing }
+OgCapitalExpense >> contingency [
+	^ contingency
+]
+
+{ #category : #accessing }
+OgCapitalExpense >> contingency: anObject [
+	contingency := anObject
+]
+
+{ #category : #accessing }
+OgCapitalExpense >> contingencyDescription [
+	<magritteDescription>
+	
+	^ MANumberDescription new
+		accessor: #contingency;
+		priority: 100;
+		yourself
+]
 
 { #category : #accessing }
 OgCapitalExpense >> fundingSource [
@@ -30,8 +54,34 @@ OgCapitalExpense >> fundingSourceDescription [
 ]
 
 { #category : #accessing }
+OgCapitalExpense >> hasPrice [
+	^ price isNotNil or: [ self quotedPrice isNotNil ]
+]
+
+{ #category : #accessing }
+OgCapitalExpense >> lastPricedSibling [
+	^ self project expenses
+		detectMax: [ :exp | 
+			| yearsToMe |
+			yearsToMe := self year - exp year.
+			(yearsToMe > 0 and: [ exp hasPrice ])
+				ifTrue: [ 1 / (self year - exp year) ]
+				ifFalse: [ 0 ] ]
+		overThreshold: 0
+]
+
+{ #category : #accessing }
 OgCapitalExpense >> price [
-	^ price
+
+	price ifNotNil: [ ^ price ].
+	
+	self quotedPrice ifNotNil: [ :qp | 
+		self contingency ifNil: [ ^ qp total ].
+		self contingency isInteger ifTrue: [ ^ qp total + self contingency dollars ].
+		"Treat as a percentage"
+		^ qp total * (1 + self contingency) ].
+	
+	^ self priceProjected ifNotNil: [ :projPrice | projPrice roundTo: 1 ]
 ]
 
 { #category : #accessing }
@@ -43,11 +93,100 @@ OgCapitalExpense >> price: anObject [
 OgCapitalExpense >> priceDescription [
 	<magritteDescription>
 	
-	^ MAMoneyDescription new
+	^ MAMoneyDescription vsNew
 		accessor: #price;
 		priority: 200;
-		beRequired;
-		stringReader: VsMAMoneyStringReader;
+		yourself
+]
+
+{ #category : #accessing }
+OgCapitalExpense >> priceList [
+
+	^ VsPriceList uniqueInstance
+]
+
+{ #category : #accessing }
+OgCapitalExpense >> priceProjected [
+
+	| lastPricedExpense |
+	lastPricedExpense := self lastPricedSibling.
+
+	lastPricedExpense ifNil: [ ^ nil ].
+
+	^ lastPricedExpense price compoundingFormula
+		nominalRate: 3 percent;
+		timeUnits: self year - lastPricedExpense year;
+		calculate
+]
+
+{ #category : #'as yet unclassified' }
+OgCapitalExpense >> priceProjectedExcelFormula [
+
+	| lastPricedExpense inflationCost |
+	lastPricedExpense := self lastPricedSibling.
+
+	lastPricedExpense ifNil: [ ^ nil ].
+	
+	inflationCost := self priceProjected - lastPricedExpense price.
+
+	^ '=', lastPricedExpense price amount asInteger displayString, ' + ', inflationCost amount asInteger displayString
+]
+
+{ #category : #'as yet unclassified' }
+OgCapitalExpense >> printOn: aStream [
+
+	self maPrintOn: aStream
+]
+
+{ #category : #accessing }
+OgCapitalExpense >> priority [
+	^ priority
+]
+
+{ #category : #accessing }
+OgCapitalExpense >> priority: anObject [
+	priority := anObject
+]
+
+{ #category : #'as yet unclassified' }
+OgCapitalExpense >> priorityDescription [
+	<magritteDescription>
+	
+	^ MAStringDescription new
+		accessor: #priority;
+		priority: 200;
+		yourself
+]
+
+{ #category : #accessing }
+OgCapitalExpense >> project [
+	^ project
+]
+
+{ #category : #accessing }
+OgCapitalExpense >> project: anObject [
+	project := anObject
+]
+
+{ #category : #accessing }
+OgCapitalExpense >> quotedPrice [
+	^ quotedPrice
+]
+
+{ #category : #accessing }
+OgCapitalExpense >> quotedPrice: anObject [
+	quotedPrice := anObject
+]
+
+{ #category : #accessing }
+OgCapitalExpense >> quotedPriceDescription [
+	<magritteDescription>
+	
+	^ MAToOneRelationDescription new
+		accessor: #quotedPrice;
+		gtSearchSource: (MessageSend receiver: self selector: #priceList); 
+		classes: VsPrice allSubclasses;
+		priority: 200;
 		yourself
 ]
 
