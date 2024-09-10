@@ -122,14 +122,16 @@ OgCapitalExpense >> priceProjected [
 { #category : #'as yet unclassified' }
 OgCapitalExpense >> priceProjectedExcelFormula [
 
-	| lastPricedExpense inflationCost |
-	lastPricedExpense := self lastPricedSibling.
+	^ self priceProjectionFormula excelFormula
+]
 
-	lastPricedExpense ifNil: [ ^ nil ].
-	
-	inflationCost := self priceProjected - lastPricedExpense price.
+{ #category : #accessing }
+OgCapitalExpense >> priceProjectionFormula [
 
-	^ '=', lastPricedExpense price amount asInteger displayString, ' + ', inflationCost amount asInteger displayString
+	^ self lastPricedSibling price compoundingFormula
+		nominalRate: 3 percent;
+		timeUnits: self year - self lastPricedSibling year;
+		yourself
 ]
 
 { #category : #'as yet unclassified' }
