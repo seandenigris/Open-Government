@@ -24,6 +24,18 @@ OgCapitalExpense >> contingency: anObject [
 ]
 
 { #category : #accessing }
+OgCapitalExpense >> contingencyAmount [
+
+	self contingency ifNil: [ ^ 0 ].
+	
+	"Treat as absolute fixed amount"
+	self contingency isInteger ifTrue: [ ^ self contingency dollars ].
+	
+	"Treat as a percentage"
+	^ self priceCalculatedWithoutContingency * self contingency
+]
+
+{ #category : #accessing }
 OgCapitalExpense >> contingencyDescription [
 	<magritteDescription>
 	
@@ -74,19 +86,27 @@ OgCapitalExpense >> lastPricedSibling [
 OgCapitalExpense >> price [
 
 	price ifNotNil: [ ^ price ].
-	
-	self quotedPrice ifNotNil: [ :qp | 
-		self contingency ifNil: [ ^ qp total ].
-		self contingency isInteger ifTrue: [ ^ qp total + self contingency dollars ].
-		"Treat as a percentage"
-		^ qp total * (1 + self contingency) ].
-	
-	^ self priceProjected ifNotNil: [ :projPrice | projPrice roundTo: 1 ]
+		
+	^ self priceCalculatedWithoutContingency
+		ifNotNil: [ :pwoc | pwoc + self contingencyAmount ]
 ]
 
 { #category : #accessing }
 OgCapitalExpense >> price: anObject [
 	price := anObject
+]
+
+{ #category : #private }
+OgCapitalExpense >> priceCalculatedWithoutContingency [
+
+	^ self quotedPrice 
+		ifNotNil: [ :qp | 
+			| quoteTotalProjected |
+			quoteTotalProjected := qp compoundingFormula
+				timeUnits: (self year - qp date year - 1);
+				nominalRate: 3 percent;
+				calculate. ]
+		ifNil: [ self priceProjected ifNil: [ ^ nil ] ].
 ]
 
 { #category : #accessing }
@@ -99,6 +119,21 @@ OgCapitalExpense >> priceDescription [
 		yourself
 ]
 
+{ #category : #'as yet unclassified' }
+OgCapitalExpense >> priceExcelFormula [
+
+	| formulaWithoutContingency |
+	formulaWithoutContingency := self quotedPrice 
+		ifNotNil: [ :qp | 
+			qp compoundingFormula
+				timeUnits: (self year - qp date year - 1);
+				nominalRate: 3 percent;
+				excelFormula. ]
+		ifNil: [ self priceProjectionFormula excelFormula ].
+		
+	^ formulaWithoutContingency, ' + ', self contingencyAmount amount asString
+]
+
 { #category : #accessing }
 OgCapitalExpense >> priceList [
 
@@ -108,15 +143,9 @@ OgCapitalExpense >> priceList [
 { #category : #accessing }
 OgCapitalExpense >> priceProjected [
 
-	| lastPricedExpense |
-	lastPricedExpense := self lastPricedSibling.
+	self lastPricedSibling ifNil: [ ^ nil ].
 
-	lastPricedExpense ifNil: [ ^ nil ].
-
-	^ lastPricedExpense price compoundingFormula
-		nominalRate: 3 percent;
-		timeUnits: self year - lastPricedExpense year;
-		calculate
+	^ self priceProjectionFormula calculate
 ]
 
 { #category : #'as yet unclassified' }
@@ -130,7 +159,7 @@ OgCapitalExpense >> priceProjectionFormula [
 
 	^ self lastPricedSibling price compoundingFormula
 		nominalRate: 3 percent;
-		timeUnits: self year - self lastPricedSibling year;
+		timeUnits: self year - self lastPricedSibling year - 1;
 		yourself
 ]
 
