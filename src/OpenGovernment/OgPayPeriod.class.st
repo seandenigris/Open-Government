@@ -10,8 +10,14 @@ Class {
 { #category : #'as yet unclassified' }
 OgPayPeriod >> averageHourlyRateOfJobTitles: aCollection [ 
 	
+	^ self payroll averageHourlyRateSelecting: [ :scen | aCollection includes: scen jobTitle ].
+]
+
+{ #category : #'as yet unclassified' }
+OgPayPeriod >> averageHourlyRateSelecting: aBlock [ 
+	
 	| payrollLines rateSum |
-	payrollLines := self payroll scenarios select: [ :scen | aCollection includes: scen jobTitle ].
+	payrollLines := self payroll scenarios select: aBlock.
 	rateSum := payrollLines sum: [ :line | line hourlyRate ].
 	^ rateSum / payrollLines size
 ]
