@@ -1,6 +1,14 @@
 Extension { #name : #PpProject }
 
 { #category : #'*OpenGovernment' }
+PpProject >> budgetTransferForm: anOgBudgetTransfer [ 
+	
+	self
+		propertyAt: #budgetTransferForm
+		put: anOgBudgetTransfer
+]
+
+{ #category : #'*OpenGovernment' }
 PpProject >> ogBidSpec [
 
 	^ self 
