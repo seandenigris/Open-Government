@@ -1,5 +1,5 @@
 Class {
-	#name : #OgBudgetTransfer,
+	#name : #OgBudgetTransferForm,
 	#superclass : #RlSignableForm,
 	#instVars : [
 		'date',
@@ -12,12 +12,18 @@ Class {
 }
 
 { #category : #accessing }
-OgBudgetTransfer class >> formClass [
+OgBudgetTransferForm class >> formClass [
 
 	^ RlPDF
 ]
 
+{ #category : #'as yet unclassified' }
+OgBudgetTransferForm >> clientPropertyKey [
+
+	^ #budgetTransfer
+]
+
 { #category : #accessing }
-OgBudgetTransfer >> newFormFilename [
+OgBudgetTransferForm >> newFormFilename [
 	^ 'Budget transfer request ' , Date today yyyymmdd , ' ' , self client title , '.pdf'
 ]
