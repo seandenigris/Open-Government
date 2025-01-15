@@ -20,7 +20,7 @@ OgBudgetTransferForm class >> formClass [
 { #category : #'as yet unclassified' }
 OgBudgetTransferForm >> clientPropertyKey [
 
-	^ #budgetTransfer
+	^ #budgetTransferForm
 ]
 
 { #category : #accessing }

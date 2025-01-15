@@ -1,11 +1,19 @@
 Extension { #name : #PpProject }
 
 { #category : #'*OpenGovernment' }
-PpProject >> budgetTransferForm: anOgBudgetTransfer [ 
+PpProject >> budgetTransferForm [
+
+	^ self
+		propertyAt: #budgetTransferForm
+		ifAbsent: nil
+]
+
+{ #category : #'*OpenGovernment' }
+PpProject >> budgetTransferForm: aSignableForm [ 
 	
 	self
 		propertyAt: #budgetTransferForm
-		put: anOgBudgetTransfer
+		putRemovingNil: aSignableForm
 ]
 
 { #category : #'*OpenGovernment' }
