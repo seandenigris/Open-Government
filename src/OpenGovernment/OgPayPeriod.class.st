@@ -46,7 +46,6 @@ OgPayPeriod >> endDateDescription [
 	
 	^ MADateDescription new
 		accessor: #endDate;
-		csvFieldName: 'Period End';
 		priority: 30;
 		yourself
 ]
