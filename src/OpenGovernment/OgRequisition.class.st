@@ -22,6 +22,12 @@ OgRequisition >> account: anObject [
 	self form account: anObject
 ]
 
+{ #category : #'as yet unclassified' }
+OgRequisition >> clientPropertyKey [
+
+	^ #requisition
+]
+
 { #category : #accessing }
 OgRequisition >> date [
 	^ date
