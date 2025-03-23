@@ -12,12 +12,6 @@ Class {
 }
 
 { #category : #accessing }
-OgRoutingSlip class >> formClass [
-
-	^ NdRoutingSlipForm
-]
-
-{ #category : #accessing }
 OgRoutingSlip >> newFormFilename [
 	^ 'Routing Slip ' , Date today yyyymmdd , ' ' , self client title , '.pdf'
 ]
