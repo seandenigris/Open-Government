@@ -76,6 +76,14 @@ OgOperatingProject >> addPurchaseOrder: aPurchaseOrder [
 	^ self purchaseOrders add: aPurchaseOrder.
 ]
 
+{ #category : #'as yet unclassified' }
+OgOperatingProject >> averageThreeYear [
+	
+	^  ((self purchaseOrders iterator
+			| [ :po | po year between: Year currentYearNumber -2 and: Year currentYearNumber  ] selectIt
+			| [ :po | po ordered ] collectIt) > Array) sum / 3.
+]
+
 { #category : #accessing }
 OgOperatingProject >> budgetRequests [
 	^ budgetRequests ifNil: [ budgetRequests := OrderedCollection new ]
