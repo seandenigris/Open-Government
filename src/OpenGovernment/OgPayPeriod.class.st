@@ -35,7 +35,7 @@ OgPayPeriod >> addDays: dayCount [
 { #category : #'as yet unclassified' }
 OgPayPeriod >> averageHourlyRateOfJobTitles: aCollection [ 
 	
-	^ self payroll averageHourlyRateSelecting: [ :scen | aCollection includes: scen jobTitle ].
+	^ self averageHourlyRateSelecting: [ :scen | aCollection includes: scen jobTitle ].
 ]
 
 { #category : #'as yet unclassified' }
