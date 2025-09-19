@@ -7,6 +7,31 @@ Class {
 	#category : #'OpenGovernment-Budgeting'
 }
 
+{ #category : #'instance creation' }
+OgPayPeriod class >> addTo: aCollection untilYear: aNumber [
+
+	| dayCount lastPeriod result newPeriod |
+	dayCount := 14.
+	lastPeriod := aCollection last.
+	result := OrderedCollection new.
+	[ 
+		newPeriod := lastPeriod addDays: dayCount.
+		newPeriod startDate year < aNumber 
+	]
+		whileTrue: [ 
+			result add: newPeriod.
+			lastPeriod := newPeriod ].
+	^ aCollection addAll: result
+]
+
+{ #category : #accessing }
+OgPayPeriod >> addDays: dayCount [
+
+	^ self class new
+		endDate: (self endDate addDays: dayCount);
+		yourself
+]
+
 { #category : #'as yet unclassified' }
 OgPayPeriod >> averageHourlyRateOfJobTitles: aCollection [ 
 	
