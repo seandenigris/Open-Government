@@ -47,3 +47,19 @@ PpProject >> requisition: aSignableForm [
 		propertyAt: #requisition
 		putRemovingNil: aSignableForm
 ]
+
+{ #category : #'*OpenGovernment' }
+PpProject >> travelRequest [
+
+	^ self
+		propertyAt: #travelRequest
+		ifAbsent: nil
+]
+
+{ #category : #'*OpenGovernment' }
+PpProject >> travelRequest: aSignableForm [
+
+	^ self
+		propertyAt: #travelRequest
+		putRemovingNil: aSignableForm
+]

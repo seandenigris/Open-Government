@@ -14,6 +14,12 @@ Class {
 }
 
 { #category : #accessing }
+OgTravelRequest class >> formClass [
+
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
 OgTravelRequest >> account [
 	^ account
 ]
@@ -51,6 +57,12 @@ OgTravelRequest >> applicantDescription [
 		  priority: 200;
 		  beRequired;
 		  yourself
+]
+
+{ #category : #accessing }
+OgTravelRequest >> clientPropertyKey [
+
+	^ #travelRequest
 ]
 
 { #category : #accessing }
