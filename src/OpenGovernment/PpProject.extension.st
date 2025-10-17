@@ -1,6 +1,22 @@
 Extension { #name : #PpProject }
 
 { #category : #'*OpenGovernment' }
+PpProject >> bidSummary [
+	
+	^ self
+		propertyAt: #bidSummary
+		ifAbsent: [ nil ]
+]
+
+{ #category : #'*OpenGovernment' }
+PpProject >> bidSummary: anOgBidSummary [ 
+	
+	self
+		propertyAt: #bidSummary
+		putRemovingNil: anOgBidSummary
+]
+
+{ #category : #'*OpenGovernment' }
 PpProject >> budgetTransferForm [
 
 	^ self
