@@ -18,6 +18,12 @@ OgBidSummary class >> formClass [
 ]
 
 { #category : #accessing }
+OgBidSummary >> clientPropertyKey [
+	
+	^ #bidSummary
+]
+
+{ #category : #accessing }
 OgBidSummary >> newFormFilename [
 	^ 'Bid Summary ' , Date today yyyymmdd , ' ' , self client title , '.pdf'
 ]
