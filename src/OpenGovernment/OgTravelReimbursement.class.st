@@ -54,6 +54,12 @@ OgTravelReimbursement >> applicantDescription [
 		  yourself
 ]
 
+{ #category : #acc }
+OgTravelReimbursement >> clientPropertyKey [
+	
+	^ #travelReimbursement
+]
+
 { #category : #accessing }
 OgTravelReimbursement >> endDate [
 	^ endDate
