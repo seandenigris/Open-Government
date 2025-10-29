@@ -65,6 +65,14 @@ PpProject >> requisition: aSignableForm [
 ]
 
 { #category : #'*OpenGovernment' }
+PpProject >> travelReimbursement: anOgTravelReimbursement [ 
+	
+	self
+		propertyAt: #travelReimbursement
+		putRemovingNil: anOgTravelReimbursement
+]
+
+{ #category : #'*OpenGovernment' }
 PpProject >> travelRequest [
 
 	^ self
